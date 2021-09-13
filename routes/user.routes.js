@@ -10,9 +10,14 @@ router.post('/register', (req, res, next) => {
         if (error) {
             return next(error);
         }
-
-        // Si no hay error, devolvemos el user registrado
-        return res.status(201).json(user)
+        req.logIn(user, (error) => {
+            // Si hay un error logeando al usuario, resolvemos el controlador
+            if (error) {
+                return next(error);
+            }
+            // Si no hay error, devolvemos al usuario logueado
+            return res.status(200).json(user)
+        });
     })(req); // ¡No te olvides de invocarlo aquí!
 });
 
@@ -32,6 +37,21 @@ router.post('/login', (req, res, next) => {
     })(req);
 });
 
+router.post('/logout', (req, res, next) => {
+    if (req.user) {
+      // Destruimos el objeto req.user para este usuario
+      req.logout();
+  
+      req.session.destroy(() => {
+        // Eliminamos la cookie de sesión al cancelar la sesión
+        res.clearCookie('connect.sid');
+        // Redirijimos el usuario a la home
+        return res.status(200).json('Hasta pronto!!');
+      });
+    } else {
+      return res.sendStatus(304); // Si no hay usuario, no habremos cambiado nada
+    }
+  });
 
 
 module.exports = router;
