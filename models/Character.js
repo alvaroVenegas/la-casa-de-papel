@@ -9,7 +9,8 @@ const characterSchema = new Schema(
     name: { type: String, required: true },//La propiedad required hace que el campo sea obligatorio
     age: { type: Number },
     alias: { type: String, required: true },
-    role: { type:String}
+    role: { type: String },
+    picture: { type: String }
   },
   {
     // Esta propiedad servirá para guardar las fechas de creación y actualización de los documentos

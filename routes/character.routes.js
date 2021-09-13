@@ -5,6 +5,8 @@ const Character = require('../models/Character');
 
 const router = express.Router();
 
+const {upload} = require('../middlewares/file.middleware')
+
 router.get('/', async (req, res, next) => {
     try {
         const characters = await Character.find();
@@ -14,14 +16,17 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.post('/create', async (req, res, next) => {
+router.post('/create', [upload.single('picture')], async (req, res, next) => {
     try {
+
+        const characterPicture = req.file ? req.file.filename : null;
         // Crearemos una instancia de character con los datos enviados
         const newCharacter = new Character({
             name: req.body.name,
             age: req.body.age,
             alias: req.body.alias,
-            role: req.body.role
+            role: req.body.role,
+            picture: characterPicture
         });
 
         // Guardamos el personaje en la DB
