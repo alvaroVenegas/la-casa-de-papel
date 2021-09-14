@@ -14,8 +14,10 @@ const MongoStore = require('connect-mongo');
 
 const {isAuthenticated} = require('./middlewares/auth.middleware');
 
+require('dotenv').config();
+
 connect();
-const PORT = 3000;
+const PORT = process.env.PORT || 4000;
 const server = express();
 
 
@@ -25,7 +27,7 @@ server.use(express.urlencoded({ extended: false }));
 
 server.use(
 	session({
-		secret: 'upgradehub_node', // ¡Este secreto tendremos que cambiarlo en producción!
+		secret: process.env.SESSION_SECRET, // ¡Este secreto tendremos que cambiarlo en producción!
 		resave: false, // Solo guardará la sesión si hay cambios en ella.
 		saveUninitialized: false, // Lo usaremos como false debido a que gestionamos nuestra sesión con Passport
 		cookie: {

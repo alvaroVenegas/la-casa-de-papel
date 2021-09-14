@@ -1,6 +1,9 @@
 const multer = require('multer');
 const path = require('path');
 
+const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
+
 const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}-${file.originalname}`);
@@ -26,4 +29,28 @@ const upload = multer({
     fileFilter,
 });
 
-module.exports = { upload };
+// Ahora tenemos un nuevo middleware de subida de archivos
+const uploadToCloudinary = async (req, res, next) => {
+	if (req.file) {
+    try{
+		const filePath = req.file.path;
+    const image = await cloudinary.uploader.upload(filePath);
+
+		// Borramos el archivo local
+    await fs.unlinkSync(filePath);
+	
+		// Añadimos la propiedad file_url a nuestro Request
+    req.file_url = image.secure_url;
+		return next();
+    }catch(error){
+      return next(error)
+    }
+  } else {
+    return next();
+  }
+};
+
+module.exports = { 
+  upload:upload,
+  uploadToCloudinary  
+};

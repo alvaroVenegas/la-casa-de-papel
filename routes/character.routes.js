@@ -5,7 +5,7 @@ const Character = require('../models/Character');
 
 const router = express.Router();
 
-const {upload} = require('../middlewares/file.middleware')
+const {upload, uploadToCloudinary} = require('../middlewares/file.middleware')
 
 router.get('/', async (req, res, next) => {
     try {
@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.post('/create', [upload.single('picture')], async (req, res, next) => {
+router.post('/create', [upload.single('picture'), uploadToCloudinary], async (req, res, next) => {
     try {
 
         const characterPicture = req.file ? req.file.filename : null;
