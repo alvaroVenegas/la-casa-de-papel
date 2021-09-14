@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "3198b2a2-8558-4bb1-91b5-78ab7d9a34d5",
+		"name": "Heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "characters",
+			"item": [
+				{
+					"name": "https://casa-de-papel.herokuapp.com/characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/characters",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://casa-de-papel.herokuapp.com/characters/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"Enrique Arce\",\n\"age\": 48,\n\"alias\": \"Arturito\",\n\"role\": \"Rehén\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/characters/create",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"characters",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://casa-de-papel.herokuapp.com/characters:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/characters:id",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"characters:id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://casa-de-papel.herokuapp.com/characters/edit/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/characters/edit/:id",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"characters",
+								"edit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "https://casa-de-papel.herokuapp.com/users/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"upgrade@hub.com\",\n  \"password\": \"upgrade1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/users/login",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://casa-de-papel.herokuapp.com/users/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"upgrade@hub.com\",\n  \"password\": \"upgrade1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/users/register",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://casa-de-papel.herokuapp.com/users/logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/users/logout",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "locations",
+			"item": [
+				{
+					"name": "https://casa-de-papel.herokuapp.com/locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/locations",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://casa-de-papel.herokuapp.com/locations/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Banco de España\",\n    \"loot\": \"Billetes\",\n    \"characters\":[]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/locations/create",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"locations",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://casa-de-papel.herokuapp.com/locations/add-character",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"locationId\":\"614075030d3065b97dd2510f\",\n    \"characterId\":\"6140514895f4700f089a9bd5\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casa-de-papel.herokuapp.com/locations/add-character",
+							"protocol": "https",
+							"host": [
+								"casa-de-papel",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"locations",
+								"add-character"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
