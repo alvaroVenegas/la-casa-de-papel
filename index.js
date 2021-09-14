@@ -4,6 +4,7 @@ const Character = require('./models/Character');
 const characterRoutes = require('./routes/character.routes');
 const locationRoutes = require('./routes/location.routes');
 const userRoutes = require('./routes/user.routes');
+const indexRoutes = require('./routes/index.routes');
 
 const passport = require('passport');
 require('./authentication/passport'); // Requerimos nuestro archivo de configuración
@@ -42,6 +43,7 @@ server.use(
 server.use(passport.initialize());
 server.use(passport.session());
 
+server.use('/', indexRoutes);
 server.use('/characters', [isAuthenticated], characterRoutes);
 server.use('/locations', locationRoutes);
 server.use('/users', userRoutes)
